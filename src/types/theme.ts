@@ -10,8 +10,7 @@ export const THEMES: Theme[] = [
   { id: "light", label: "Light", icon: "☀️" },
   { id: "dark", label: "Dark", icon: "🌙" },
   { id: "geekos", label: "Geekos", icon: "💻" },
-  { id: "heroic-fantasy", label: "Heroic Fantasy", icon: "⚔️" },
-  { id: "harlequin", label: "Harlequin", icon: "🃏" },
+  { id: "heroic-fantasy", label: "Heroic Fantasy", icon: "🗡" },
 ];
 
 export const DEFAULT_THEME: ThemeId = "dark";

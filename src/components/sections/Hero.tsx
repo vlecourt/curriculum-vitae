@@ -7,7 +7,7 @@ export function Hero() {
   const title = useTypewriter(heroTitles);
 
   return (
-    <section className="relative min-h-[80vh] flex flex-col justify-center px-4 max-w-4xl mx-auto py-20">
+    <section className="relative min-h-[80vh] flex flex-col justify-center px-4 max-w-4xl mx-auto py-12 md:py-20">
       <p
         className="text-sm mb-4 tracking-widest uppercase"
         style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}
@@ -37,10 +37,10 @@ export function Hero() {
         {profile.tagline}
       </p>
 
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
         <a
           href="#experience"
-          className="px-6 py-3 rounded-lg font-medium transition-all hover:scale-105"
+          className="px-6 py-3 rounded-lg font-medium text-center transition-all hover:scale-105"
           style={{
             backgroundColor: "var(--accent)",
             color: "var(--accent-text)",
@@ -53,7 +53,7 @@ export function Hero() {
           href={`https://github.com/${profile.github}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 rounded-lg font-medium border transition-all hover:scale-105"
+          className="px-6 py-3 rounded-lg font-medium border text-center transition-all hover:scale-105"
           style={{
             borderColor: "var(--accent)",
             color: "var(--accent)",
@@ -64,7 +64,7 @@ export function Hero() {
         </a>
         <a
           href="#contact"
-          className="px-6 py-3 rounded-lg font-medium border transition-all hover:scale-105"
+          className="px-6 py-3 rounded-lg font-medium border text-center transition-all hover:scale-105"
           style={{
             borderColor: "var(--border)",
             color: "var(--text-muted)",

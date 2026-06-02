@@ -24,6 +24,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // Hint in source: <!-- Try /secret -->
     <html lang="fr" className={`${inter.className} h-full antialiased`} suppressHydrationWarning>
+      {/* Blocking script: sets data-theme before first paint to prevent flash */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('portfolio-theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <ConsoleGreeting />

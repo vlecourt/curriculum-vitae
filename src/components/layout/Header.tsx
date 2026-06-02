@@ -4,11 +4,11 @@ import Link from "next/link";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const NAV_LINKS = [
-  { href: "#experience", label: "Expérience" },
-  { href: "#skills", label: "Stack" },
-  { href: "#projects", label: "Projets" },
-  { href: "#education", label: "Formation" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#experience", label: "Expérience" },
+  { href: "/#skills", label: "Stack" },
+  { href: "/#projects", label: "Projets" },
+  { href: "/#education", label: "Formation" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -42,7 +42,17 @@ export function Header() {
           ))}
         </nav>
 
-        <ThemeSwitcher />
+        <div className="flex items-center gap-3">
+          <Link
+            href="/print"
+            className="hidden md:inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border transition-opacity opacity-60 hover:opacity-100"
+            style={{ borderColor: "var(--border)", color: "var(--text)" }}
+            target="_blank"
+          >
+            <span>⎙</span> Version papier
+          </Link>
+          <ThemeSwitcher />
+        </div>
       </div>
     </header>
   );

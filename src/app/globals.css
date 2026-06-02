@@ -134,6 +134,49 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpolygon points='30,0 60,30 30,60 0,30' fill='%23ffd70015'/%3E%3C/svg%3E");
 }
 
+/* ─── Print ──────────────────────────────────────────────── */
+@media print {
+  /* Hide site chrome */
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset page background */
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Remove decorative overlays */
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  /* Remove paper shadow and outer padding */
+  #cv-print {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* The wrapper page: no gray background, no padding */
+  #cv-print ~ *,
+  [style*="background: #e5e7eb"] {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm;
+  }
+}
+
 /* ─── Utility classes ────────────────────────────────────── */
 .theme-bg { background-color: var(--bg); }
 .theme-bg-card { background-color: var(--bg-card); }

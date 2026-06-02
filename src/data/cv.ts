@@ -13,6 +13,17 @@ export const profile: Profile = {
 
 export const experiences: Experience[] = [
   {
+    company: "LISI Automotive",
+    period: "2014 — 2019",
+    type: "Alternance → CDI",
+    highlights: [
+      "Optimisation et administration des bases de données ERP : vues, triggers, indexes, requêtes complexes",
+      "Mise en place des pipelines CI/CD et de la conteneurisation de l'ensemble du SI",
+      "Stack de monitoring ELK (Elasticsearch, Logstash, Kibana) pour la supervision applicative",
+    ],
+    technologies: ["Java", "SQL", "Kubernetes", "Docker", "GitLab", "Angular", "Jest", "RabbitMQ", "ELK Stack"],
+  },
+  {
     company: "UNESS",
     period: "2020 — présent",
     type: "CDI",
@@ -25,20 +36,15 @@ export const experiences: Experience[] = [
     ],
     technologies: ["Angular", "Node.js", "Bun", "Vitest", "PostgreSQL", "Docker", "RabbitMQ", "GitLab CI", "Grafana"],
   },
-  {
-    company: "LISI Automotive",
-    period: "2014 — 2019",
-    type: "Alternance → CDI",
-    highlights: [
-      "Expertise bases de données ERP : vues, triggers, indexes, optimisation de requêtes complexes",
-      "Mise en place des pipelines CI/CD et de la conteneurisation de l'ensemble du SI",
-      "Stack de monitoring ELK (Elasticsearch, Logstash, Kibana) pour la supervision applicative",
-    ],
-    technologies: ["Java", "SQL", "Kubernetes", "Docker", "GitLab", "Angular", "Jest", "RabbitMQ", "ELK Stack"],
-  },
 ];
 
 export const education: Education[] = [
+  {
+    degree: "DUT Informatique",
+    institution: "UPMF",
+    location: "Grenoble",
+    period: "2011 — 2013",
+  },
   {
     degree: "Diplôme d'ingénieur — Systèmes d'information",
     institution: "UTBM",
@@ -52,20 +58,14 @@ export const education: Education[] = [
     period: "2015 — 2016",
     details: ["Artificial Intelligence", "Reactive Systems", "Real-time Systems"],
   },
-  {
-    degree: "DUT Informatique",
-    institution: "UPMF",
-    location: "Grenoble",
-    period: "2011 — 2013",
-  },
 ];
 
 export const projects: Project[] = [
   {
-    name: "Boomerang Competition Manager",
-    description: "PWA de gestion de compétitions de boomerang avec interface mobile pour les juges sur le terrain. Gestion des scores en temps réel, classements live.",
-    period: "2025 — 2026",
-    tags: ["PWA", "TypeScript", "Real-time", "Mobile"],
+    name: "Raspberry Pi & Neural Algos",
+    description: "Expérimentations sur des algorithmes neuronaux embarqués sur Raspberry Pi. Curiosité pour le ML embarqué et le traitement en local.",
+    period: "2016 — 2019",
+    tags: ["Raspberry Pi", "Machine Learning", "Embedded", "Python"],
   },
   {
     name: "Marché Maraîcher",
@@ -74,16 +74,16 @@ export const projects: Project[] = [
     tags: ["TypeScript", "Next.js", "E-commerce", "Full-Stack"],
   },
   {
-    name: "Création de jeu",
-    description: "Projet personnel de développement de jeu en cours. Game design, mécaniques de jeu et prototypage.",
-    period: "2025 — ...",
-    tags: ["Game Dev", "TypeScript", "Design"],
+    name: "Boomerang Competition Manager",
+    description: "PWA de gestion de compétitions de boomerang avec interface mobile pour les juges sur le terrain. Gestion des scores en temps réel, classements live.",
+    period: "2025 — 2026",
+    tags: ["PWA", "TypeScript", "Real-time", "Mobile"],
   },
   {
-    name: "Raspberry Pi & Neural Algos",
-    description: "Expérimentations sur des algorithmes neuronaux embarqués sur Raspberry Pi. Exploration du edge computing avant l'heure.",
-    period: "1993 — 2025",
-    tags: ["Raspberry Pi", "Machine Learning", "Embedded", "Python"],
+    name: "Création de jeu",
+    description: "Projet personnel de développement de jeu en cours. Game design, mécaniques de jeu et prototypage.",
+    period: "2026",
+    tags: ["Game Dev", "TypeScript", "Design"],
   },
 ];
 
