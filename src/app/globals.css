@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ─── Light ──────────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-card: #f8fafc;
+  --bg-subtle: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-text: #ffffff;
+  --badge-bg: #dbeafe;
+  --badge-text: #1d4ed8;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ─── Dark ───────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg: #020617;
+  --bg-card: #0f172a;
+  --bg-subtle: #1e293b;
+  --border: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-text: #020617;
+  --badge-bg: #1e3a5f;
+  --badge-text: #93c5fd;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ─── Geekos (terminal) ──────────────────────────────────── */
+[data-theme="geekos"] {
+  --bg: #0d1117;
+  --bg-card: #161b22;
+  --bg-subtle: #1c2128;
+  --border: #00ff4122;
+  --text: #00ff41;
+  --text-muted: #00cc33;
+  --accent: #00ffff;
+  --accent-hover: #7fffff;
+  --accent-text: #0d1117;
+  --badge-bg: #00ff4111;
+  --badge-text: #00ff41;
+  --font-body: "JetBrains Mono", "Fira Code", monospace;
+  --font-heading: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ─── Heroic Fantasy ─────────────────────────────────────── */
+[data-theme="heroic-fantasy"] {
+  --bg: #1a0d00;
+  --bg-card: #2d1a00;
+  --bg-subtle: #3d2400;
+  --border: #6b4423;
+  --text: #e8d5a3;
+  --text-muted: #c4a96e;
+  --accent: #d4af37;
+  --accent-hover: #f0cc55;
+  --accent-text: #1a0d00;
+  --badge-bg: #d4af3722;
+  --badge-text: #d4af37;
+  --font-body: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-heading: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+/* ─── Harlequin ──────────────────────────────────────────── */
+[data-theme="harlequin"] {
+  --bg: #fafafa;
+  --bg-card: #ffffff;
+  --bg-subtle: #f5f5f5;
+  --border: #1a1a1a;
+  --text: #1a1a1a;
+  --text-muted: #555555;
+  --accent: #e8001e;
+  --accent-hover: #c0001a;
+  --accent-text: #ffd700;
+  --badge-bg: #ffd700;
+  --badge-text: #1a1a1a;
+  --font-body: "Arial Black", "Impact", sans-serif;
+  --font-heading: "Impact", "Arial Black", sans-serif;
+  --font-mono: "Courier New", monospace;
+}
+
+/* ─── Base styles ────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Geekos scanlines overlay ───────────────────────────── */
+[data-theme="geekos"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.02) 2px,
+    rgba(0, 255, 65, 0.02) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Heroic Fantasy parchment noise ─────────────────────── */
+[data-theme="heroic-fantasy"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Harlequin diamond background ───────────────────────── */
+[data-theme="harlequin"] body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpolygon points='30,0 60,30 30,60 0,30' fill='%23ffd70015'/%3E%3C/svg%3E");
+}
+
+/* ─── Utility classes ────────────────────────────────────── */
+.theme-bg { background-color: var(--bg); }
+.theme-bg-card { background-color: var(--bg-card); }
+.theme-bg-subtle { background-color: var(--bg-subtle); }
+.theme-border { border-color: var(--border); }
+.theme-text { color: var(--text); }
+.theme-text-muted { color: var(--text-muted); }
+.theme-accent { color: var(--accent); }
+.theme-accent-bg { background-color: var(--accent); }
+.theme-heading { font-family: var(--font-heading); }
+.theme-mono { font-family: var(--font-mono); }
