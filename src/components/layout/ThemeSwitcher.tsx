@@ -8,8 +8,8 @@ import { CONSOLE_STYLES } from "@/utils/consoleStyles";
 
 const HINT_TRIGGER_THEME: ThemeId = "heroic-fantasy";
 const TOAST_APPEAR_DELAY_MS = 10;
-const TOAST_VISIBLE_MS = 2800;
-const TOAST_UNMOUNT_MS = 3300;
+const TOAST_VISIBLE_MS = 5500;
+const TOAST_UNMOUNT_MS = 6200;
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -48,20 +48,23 @@ export function ThemeSwitcher() {
           <div
             style={{
               position: "fixed",
-              bottom: "24px",
-              right: "24px",
+              bottom: "32px",
+              left: "50%",
               zIndex: 9998,
-              padding: "12px 16px",
-              borderRadius: "8px",
+              padding: "14px 20px",
+              borderRadius: "10px",
               fontSize: "14px",
+              fontWeight: 500,
               pointerEvents: "none",
               backgroundColor: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              color: "var(--text-muted)",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+              border: "1px solid var(--accent)",
+              color: "var(--text)",
+              boxShadow: "0 8px 24px rgba(0,0,0,0.35), 0 0 0 1px var(--accent)",
               opacity: toastOpaque ? 1 : 0,
-              transform: toastOpaque ? "translateY(0)" : "translateY(8px)",
-              transition: "opacity 0.4s ease, transform 0.4s ease",
+              transform: toastOpaque
+                ? "translateX(-50%) translateY(0) scale(1)"
+                : "translateX(-50%) translateY(32px) scale(0.9)",
+              transition: "opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
             }}
           >
             ✨ Ouvre la console... il y a peut-être quelque chose de caché.
