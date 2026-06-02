@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { THEMES, type ThemeId } from "@/types/theme";
+import { THEMES, HEROIC_FANTASY_THEME, type ThemeId } from "@/types/theme";
 import { useTheme } from "@/context/ThemeContext";
 import { CONSOLE_STYLES } from "@/utils/consoleStyles";
 
-const HINT_TRIGGER_THEME: ThemeId = "heroic-fantasy";
+const HINT_TRIGGER_THEME = HEROIC_FANTASY_THEME;
 const TOAST_APPEAR_DELAY_MS = 10;
 const TOAST_VISIBLE_MS = 5500;
 const TOAST_UNMOUNT_MS = 6200;
@@ -46,6 +46,7 @@ export function ThemeSwitcher() {
     toastVisible && typeof document !== "undefined"
       ? createPortal(
           <div
+            className="no-print"
             style={{
               position: "fixed",
               bottom: "32px",

@@ -156,24 +156,29 @@ body {
     display: none !important;
   }
 
-  /* Remove paper shadow and outer padding */
+  /* Paper: full width, no shadow, explicit mm margins */
   #cv-print {
     box-shadow: none !important;
     max-width: 100% !important;
-    padding: 0 !important;
     margin: 0 !important;
+    padding: 14mm 18mm !important;
   }
 
-  /* The wrapper page: no gray background, no padding */
-  #cv-print ~ *,
-  [style*="background: #e5e7eb"] {
+  /* Fantasy: slightly tighter vertical to fit colophon + divider */
+  #cv-print.cv-print-fantasy {
+    padding: 9.5mm 16mm !important;
+  }
+
+  /* The wrapper page: no colored background, no padding, no vh height */
+  .print-page-wrapper {
     background: transparent !important;
     padding: 0 !important;
+    min-height: 0 !important;
   }
 
   @page {
     size: A4 portrait;
-    margin: 18mm 16mm;
+    margin: 0;
   }
 }
 

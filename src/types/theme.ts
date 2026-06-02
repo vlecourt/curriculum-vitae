@@ -15,3 +15,4 @@ export const THEMES: Theme[] = [
 
 export const DEFAULT_THEME: ThemeId = "dark";
 export const EASTER_EGG_THEME: ThemeId = "harlequin";
+export const HEROIC_FANTASY_THEME: ThemeId = "heroic-fantasy";
