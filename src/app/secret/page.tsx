@@ -25,15 +25,13 @@ export default function SecretPage() {
 
       <p className="text-xl mb-4 animate-pulse">[ PAGE SECRÈTE DÉVERROUILLÉE ]</p>
       <p className="text-sm opacity-70 mb-8 max-w-md">
-        Tu as trouvé cet endroit. Soit tu as cherché dans le code source, soit tu es vraiment
-        curieux·se. Dans les deux cas, j&apos;aime ton énergie.
+        Cet endroit existe. Peu de gens le trouvent — par curiosité, par exploration du code, ou par séquence bien connue.
       </p>
 
       <div className="text-sm opacity-60 space-y-1 mb-12">
-        <p>🎮 Essaie aussi : ↑ ↑ ↓ ↓ ← → ← → B A sur la page principale</p>
-        <p>💻 5 thèmes disponibles. Geekos est mon préféré.</p>
-        <p>🃏 Harlequin a été inspiré par trop de soirées Magic: The Gathering.</p>
-        <p>⚔️ Le thème Heroic Fantasy existe parce que j&apos;ai des figurines sur mon bureau.</p>
+        <p>🎮 La page principale cache une séquence culte : ↑ ↑ ↓ ↓ ← → ← → B A</p>
+        <p>⚔️ Heroic Fantasy est mon thème de cœur.</p>
+        <p>🃏 Harlequin est né de trop de soirées murder party et jeux de rôles.</p>
       </div>
 
       <Link
