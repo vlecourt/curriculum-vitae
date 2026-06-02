@@ -3,8 +3,11 @@
 import { heroTitles, profile } from "@/data/cv";
 import { useTypewriter } from "@/hooks/useTypewriter";
 
+const CTA_CLASS =
+  "px-6 py-3 rounded-lg font-medium text-center transition-transform active:scale-95 [@media(hover:hover)]:hover:scale-105";
+
 export function Hero() {
-  const title = useTypewriter(heroTitles);
+  const animatedTitle = useTypewriter(heroTitles);
 
   return (
     <section className="relative min-h-[80vh] flex flex-col justify-center px-4 max-w-4xl mx-auto py-12 md:py-20">
@@ -16,7 +19,7 @@ export function Hero() {
       </p>
 
       <h1
-        className="text-5xl md:text-7xl font-bold mb-4 leading-tight"
+        className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight"
         style={{ color: "var(--text)", fontFamily: "var(--font-heading)" }}
       >
         {profile.name}
@@ -26,7 +29,7 @@ export function Hero() {
         className="text-2xl md:text-3xl font-medium mb-6 h-10 flex items-center gap-2"
         style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}
       >
-        <span>{title}</span>
+        <span>{animatedTitle}</span>
         <span className="animate-pulse">|</span>
       </div>
 
@@ -40,7 +43,7 @@ export function Hero() {
       <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
         <a
           href="#experience"
-          className="px-6 py-3 rounded-lg font-medium text-center transition-all hover:scale-105"
+          className={CTA_CLASS}
           style={{
             backgroundColor: "var(--accent)",
             color: "var(--accent-text)",
@@ -53,7 +56,7 @@ export function Hero() {
           href={`https://github.com/${profile.github}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 rounded-lg font-medium border text-center transition-all hover:scale-105"
+          className={`${CTA_CLASS} border`}
           style={{
             borderColor: "var(--accent)",
             color: "var(--accent)",
@@ -64,7 +67,7 @@ export function Hero() {
         </a>
         <a
           href="#contact"
-          className="px-6 py-3 rounded-lg font-medium border text-center transition-all hover:scale-105"
+          className={`${CTA_CLASS} border`}
           style={{
             borderColor: "var(--border)",
             color: "var(--text-muted)",

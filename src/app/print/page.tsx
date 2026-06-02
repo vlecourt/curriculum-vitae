@@ -3,10 +3,13 @@ import { SiteQRCode } from "@/components/print/SiteQRCode";
 import { PrintButton } from "@/components/print/PrintButton";
 
 export const metadata = {
-  title: "CV — Valentin Lecourt",
+  title: "CV Imprimable — Valentin Lecourt, Ingénieur Full-Stack & DevOps",
+  description:
+    "Version imprimable du CV de Valentin Lecourt : expériences professionnelles, compétences techniques, formation et projets personnels.",
+  alternates: { canonical: "/print" },
 };
 
-const S = {
+const PRINT_STYLES = {
   page: {
     background: "#e5e7eb",
     minHeight: "100vh",
@@ -21,6 +24,11 @@ const S = {
     alignItems: "center",
     justifyContent: "space-between",
     gap: 12,
+  } as React.CSSProperties,
+
+  toolbarLabel: {
+    fontSize: 13,
+    color: "#6b7280",
   } as React.CSSProperties,
 
   paper: {
@@ -142,6 +150,36 @@ const S = {
     fontWeight: 500,
   } as React.CSSProperties,
 
+  projectGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "8px 24px",
+  } as React.CSSProperties,
+
+  projectItem: {
+    breakInside: "avoid" as React.CSSProperties["breakInside"],
+    marginBottom: 6,
+  } as React.CSSProperties,
+
+  projectHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+  } as React.CSSProperties,
+
+  projectName: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: "#0f172a",
+  } as React.CSSProperties,
+
+  projectDesc: {
+    fontSize: 10,
+    color: "#475569",
+    margin: "2px 0 4px",
+    lineHeight: 1.4,
+  } as React.CSSProperties,
+
   columns: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
@@ -163,6 +201,17 @@ const S = {
     lineHeight: 1.5,
   } as React.CSSProperties,
 
+  langList: {
+    display: "flex",
+    flexWrap: "wrap" as React.CSSProperties["flexWrap"],
+    gap: "4px 20px",
+  } as React.CSSProperties,
+
+  langItem: {
+    fontSize: 11,
+    color: "#334155",
+  } as React.CSSProperties,
+
   eduItem: {
     marginBottom: 10,
     breakInside: "avoid" as React.CSSProperties["breakInside"],
@@ -179,28 +228,37 @@ const S = {
     fontSize: 10,
     color: "#64748b",
   } as React.CSSProperties,
+
+  eduDetails: {
+    fontSize: 10,
+    color: "#94a3b8",
+    marginTop: 1,
+  } as React.CSSProperties,
+
+  interestList: {
+    fontSize: 11,
+    color: "#475569",
+    lineHeight: 1.8,
+  } as React.CSSProperties,
 };
 
 export default function PrintPage() {
   return (
-    <div style={S.page}>
-      {/* Screen-only toolbar */}
-      <div className="no-print" style={S.toolbar}>
-        <span style={{ fontSize: 13, color: "#6b7280" }}>
+    <div style={PRINT_STYLES.page}>
+      <div className="no-print" style={PRINT_STYLES.toolbar}>
+        <span style={PRINT_STYLES.toolbarLabel}>
           Aperçu avant impression — Version papier du CV
         </span>
         <PrintButton />
       </div>
 
-      {/* A4 paper */}
-      <div id="cv-print" style={S.paper}>
-        {/* ── Header ─────────────────────────────────────── */}
-        <div style={S.cvHeader}>
+      <div id="cv-print" style={PRINT_STYLES.paper}>
+        <div style={PRINT_STYLES.cvHeader}>
           <div>
-            <h1 style={S.h1}>{profile.name}</h1>
-            <p style={S.jobTitle}>{profile.title}</p>
-            <p style={S.tagline}>{profile.tagline}</p>
-            <div style={S.contactLine}>
+            <h1 style={PRINT_STYLES.h1}>{profile.name}</h1>
+            <p style={PRINT_STYLES.jobTitle}>{profile.title}</p>
+            <p style={PRINT_STYLES.tagline}>{profile.tagline}</p>
+            <div style={PRINT_STYLES.contactLine}>
               <span>✉ {profile.email}</span>
               <span>✆ {profile.phone}</span>
               <span>⌥ github.com/{profile.github}</span>
@@ -210,92 +268,85 @@ export default function PrintPage() {
           <SiteQRCode size={72} />
         </div>
 
-        {/* ── Expérience ─────────────────────────────────── */}
-        <h2 style={S.sectionTitle}>Expérience professionnelle</h2>
+        <h2 style={PRINT_STYLES.sectionTitle}>Expérience professionnelle</h2>
         {experiences.map((exp) => (
-          <div key={exp.company} style={S.expItem}>
-            <div style={S.expHeader}>
-              <span style={S.expCompany}>
+          <div key={exp.company} style={PRINT_STYLES.expItem}>
+            <div style={PRINT_STYLES.expHeader}>
+              <span style={PRINT_STYLES.expCompany}>
                 {exp.company}
-                <span style={S.expType}>{exp.type}</span>
+                <span style={PRINT_STYLES.expType}>{exp.type}</span>
               </span>
-              <span style={S.expMeta}>{exp.period}</span>
+              <span style={PRINT_STYLES.expMeta}>{exp.period}</span>
             </div>
-            <ul style={S.ul}>
-              {exp.highlights.map((h) => (
-                <li key={h} style={S.li}>{h}</li>
+            <ul style={PRINT_STYLES.ul}>
+              {exp.highlights.map((highlight) => (
+                <li key={highlight} style={PRINT_STYLES.li}>{highlight}</li>
               ))}
             </ul>
-            <div style={S.tags}>
-              {exp.technologies.map((t) => (
-                <span key={t} style={S.tag}>{t}</span>
+            <div style={PRINT_STYLES.tags}>
+              {exp.technologies.map((tech) => (
+                <span key={tech} style={PRINT_STYLES.tag}>{tech}</span>
               ))}
             </div>
           </div>
         ))}
 
-        {/* ── Projets ────────────────────────────────────── */}
-        <h2 style={S.sectionTitle}>Projets personnels</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 24px" }}>
-          {projects.map((p) => (
-            <div key={p.name} style={{ breakInside: "avoid", marginBottom: 6 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#0f172a" }}>{p.name}</span>
-                <span style={S.expMeta}>{p.period}</span>
+        <h2 style={PRINT_STYLES.sectionTitle}>Projets personnels</h2>
+        <div style={PRINT_STYLES.projectGrid}>
+          {projects.map((project) => (
+            <div key={project.name} style={PRINT_STYLES.projectItem}>
+              <div style={PRINT_STYLES.projectHeader}>
+                <span style={PRINT_STYLES.projectName}>{project.name}</span>
+                <span style={PRINT_STYLES.expMeta}>{project.period}</span>
               </div>
-              <p style={{ fontSize: 10, color: "#475569", margin: "2px 0 4px", lineHeight: 1.4 }}>
-                {p.description}
-              </p>
-              <div style={S.tags}>
-                {p.tags.map((t) => (
-                  <span key={t} style={S.tag}>{t}</span>
+              <p style={PRINT_STYLES.projectDesc}>{project.description}</p>
+              <div style={PRINT_STYLES.tags}>
+                {project.tags.map((tag) => (
+                  <span key={tag} style={PRINT_STYLES.tag}>{tag}</span>
                 ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* ── Deux colonnes : compétences / formation ─────── */}
-        <div style={S.columns}>
-          {/* Colonne gauche */}
+        <div style={PRINT_STYLES.columns}>
           <div>
-            <h2 style={S.sectionTitle}>Compétences</h2>
-            {skills.map((g) => (
-              <div key={g.category}>
-                <div style={S.skillCategory}>{g.category}</div>
-                <div style={S.skillItems}>{g.items.join(", ")}</div>
+            <h2 style={PRINT_STYLES.sectionTitle}>Compétences</h2>
+            {skills.map((group) => (
+              <div key={group.category}>
+                <div style={PRINT_STYLES.skillCategory}>{group.category}</div>
+                <div style={PRINT_STYLES.skillItems}>{group.items.join(", ")}</div>
               </div>
             ))}
 
-            <h2 style={S.sectionTitle}>Langues</h2>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 20px" }}>
-              {languages.map((l) => (
-                <span key={l.name} style={{ fontSize: 11, color: "#334155" }}>
-                  <strong>{l.name}</strong> — {l.level}
+            <h2 style={PRINT_STYLES.sectionTitle}>Langues</h2>
+            <div style={PRINT_STYLES.langList}>
+              {languages.map((lang) => (
+                <span key={lang.name} style={PRINT_STYLES.langItem}>
+                  <strong>{lang.name}</strong> — {lang.level}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Colonne droite */}
           <div>
-            <h2 style={S.sectionTitle}>Formation</h2>
-            {education.map((e) => (
-              <div key={e.degree} style={S.eduItem}>
-                <div style={S.eduDegree}>{e.degree}</div>
-                <div style={S.eduMeta}>
-                  {e.institution} · {e.location} · {e.period}
+            <h2 style={PRINT_STYLES.sectionTitle}>Formation</h2>
+            {education.map((edu) => (
+              <div key={edu.degree} style={PRINT_STYLES.eduItem}>
+                <div style={PRINT_STYLES.eduDegree}>{edu.degree}</div>
+                <div style={PRINT_STYLES.eduMeta}>
+                  {edu.institution} · {edu.location} · {edu.period}
                 </div>
-                {e.details && (
-                  <div style={{ fontSize: 10, color: "#94a3b8", marginTop: 1 }}>
-                    {e.details.join(", ")}
+                {edu.details && (
+                  <div style={PRINT_STYLES.eduDetails}>
+                    {edu.details.join(", ")}
                   </div>
                 )}
               </div>
             ))}
 
-            <h2 style={S.sectionTitle}>Centres d&apos;intérêt</h2>
-            <div style={{ fontSize: 11, color: "#475569", lineHeight: 1.8 }}>
+            <h2 style={PRINT_STYLES.sectionTitle}>Centres d&apos;intérêt</h2>
+            <div style={PRINT_STYLES.interestList}>
               {interests.join(" · ")}
             </div>
           </div>

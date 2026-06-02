@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { ThemeProvider, STORAGE_KEY } from "@/context/ThemeContext";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { KonamiCode } from "@/components/easter-eggs/KonamiCode";
@@ -10,6 +10,7 @@ import { ConsoleGreeting } from "@/components/easter-eggs/ConsoleGreeting";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://curriculum-vitae-production-9f0a.up.railway.app"),
   title: "Valentin Lecourt — Ingénieur Full-Stack & Facilitateur IA",
   description:
     "Portfolio de Valentin Lecourt, ingénieur logiciel avec 10+ ans d'expérience en développement full-stack, DevOps et IA. Basé à Grenoble.",
@@ -17,18 +18,18 @@ export const metadata: Metadata = {
     title: "Valentin Lecourt — Ingénieur Full-Stack",
     description: "Portfolio de Valentin Lecourt, ingénieur logiciel basé à Grenoble.",
     type: "website",
+    url: "/",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Hint in source: <!-- Try /secret -->
     <html lang="fr" className={`${inter.className} h-full antialiased`} suppressHydrationWarning>
       {/* Blocking script: sets data-theme before first paint to prevent flash */}
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('portfolio-theme')||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
+            __html: `try{var t=localStorage.getItem(${JSON.stringify(STORAGE_KEY)})||'dark';document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
           }}
         />
       </head>

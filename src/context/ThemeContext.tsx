@@ -3,14 +3,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { DEFAULT_THEME, type ThemeId } from "@/types/theme";
 
-const STORAGE_KEY = "portfolio-theme";
+export const STORAGE_KEY = "portfolio-theme";
 
 function loadTheme(): ThemeId {
   if (typeof window === "undefined") return DEFAULT_THEME;
   return (localStorage.getItem(STORAGE_KEY) as ThemeId | null) ?? DEFAULT_THEME;
 }
 
-function persistTheme(theme: ThemeId): void {
+function applyAndPersistTheme(theme: ThemeId): void {
   localStorage.setItem(STORAGE_KEY, theme);
   document.documentElement.setAttribute("data-theme", theme);
 }
@@ -33,7 +33,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   function setTheme(next: ThemeId) {
     setThemeState(next);
-    persistTheme(next);
+    applyAndPersistTheme(next);
   }
 
   return (

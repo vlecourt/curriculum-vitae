@@ -1,4 +1,4 @@
-import type { ContactLink, Education, Experience, Language, Profile, Project, SkillGroup } from "@/types/cv";
+import type { Education, Experience, Language, Profile, Project, SkillGroup } from "@/types/cv";
 
 export const profile: Profile = {
   name: "Valentin Lecourt",
@@ -133,11 +133,3 @@ export const heroTitles: string[] = [
   "Architecte Logiciel",
 ];
 
-export function buildContactLinks(p: Profile): ContactLink[] {
-  return [
-    { label: "Email", value: p.email, href: `mailto:${p.email}` },
-    { label: "Téléphone", value: p.phone, href: `tel:${p.phone.replace(/\s/g, "")}` },
-    { label: "GitHub", value: `github.com/${p.github}`, href: `https://github.com/${p.github}` },
-    { label: "Localisation", value: p.location, href: "#" },
-  ];
-}

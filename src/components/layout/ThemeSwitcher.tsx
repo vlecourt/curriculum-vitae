@@ -1,33 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { THEMES } from "@/types/theme";
+import { THEMES, type ThemeId } from "@/types/theme";
 import { useTheme } from "@/context/ThemeContext";
+import { CONSOLE_STYLES } from "@/utils/consoleStyles";
 
-const CONSOLE_HINT_STYLE = "color: #a855f7; font-size: 13px; font-family: monospace;";
-const CONSOLE_SECRET_STYLE = "color: #d4af37; font-size: 12px; font-family: monospace; font-style: italic;";
+const HINT_TRIGGER_THEME: ThemeId = "heroic-fantasy";
+const TOAST_APPEAR_DELAY_MS = 10;
+const TOAST_VISIBLE_MS = 2800;
+const TOAST_UNMOUNT_MS = 3300;
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
   const [toastVisible, setToastVisible] = useState(false);
   const [toastOpaque, setToastOpaque] = useState(false);
+  const toastTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => {
+    return () => toastTimers.current.forEach(clearTimeout);
+  }, []);
 
   function showConsoleHint() {
-    console.log(`%c⚔️  Héroïc Fantasy activé...`, CONSOLE_HINT_STYLE);
-    console.log(`%c   Tu sembles apprécier les thèmes cachés.`, CONSOLE_HINT_STYLE);
-    console.log(`%c   🃏 Il paraît qu'une séquence légendaire débloque quelque chose de... chaotique.`, CONSOLE_SECRET_STYLE);
+    toastTimers.current.forEach(clearTimeout);
+
+    console.log(`%c⚔️  Héroïc Fantasy activé...`, CONSOLE_STYLES.hint);
+    console.log(`%c   Tu sembles apprécier les thèmes cachés.`, CONSOLE_STYLES.hint);
+    console.log(`%c   🃏 Il paraît qu'une séquence légendaire débloque quelque chose de... chaotique.`, CONSOLE_STYLES.secretItalic);
 
     setToastVisible(true);
-    setTimeout(() => setToastOpaque(true), 10);
-    setTimeout(() => setToastOpaque(false), 2800);
-    setTimeout(() => setToastVisible(false), 3300);
+    toastTimers.current = [
+      setTimeout(() => setToastOpaque(true), TOAST_APPEAR_DELAY_MS),
+      setTimeout(() => setToastOpaque(false), TOAST_VISIBLE_MS),
+      setTimeout(() => setToastVisible(false), TOAST_UNMOUNT_MS),
+    ];
   }
 
-  function handleClick(id: string) {
+  function handleClick(id: ThemeId) {
     if (id === theme) return;
-    if (id === "heroic-fantasy") showConsoleHint();
-    setTheme(id as Parameters<typeof setTheme>[0]);
+    if (id === HINT_TRIGGER_THEME) showConsoleHint();
+    setTheme(id);
   }
 
   const toast =
@@ -61,19 +73,19 @@ export function ThemeSwitcher() {
   return (
     <>
       <div className="flex items-center gap-1">
-        {THEMES.map((t) => (
+        {THEMES.map((themeOption) => (
           <button
-            key={t.id}
-            onClick={() => handleClick(t.id)}
-            title={t.label}
+            key={themeOption.id}
+            onClick={() => handleClick(themeOption.id)}
+            title={themeOption.label}
             className="w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-xs md:text-sm transition-all cursor-pointer"
             style={{
-              backgroundColor: theme === t.id ? "var(--accent)" : "transparent",
-              color: theme === t.id ? "var(--accent-text)" : "var(--text-muted)",
-              border: `1px solid ${theme === t.id ? "var(--accent)" : "var(--border)"}`,
+              backgroundColor: theme === themeOption.id ? "var(--accent)" : "transparent",
+              color: theme === themeOption.id ? "var(--accent-text)" : "var(--text-muted)",
+              border: `1px solid ${theme === themeOption.id ? "var(--accent)" : "var(--border)"}`,
             }}
           >
-            {t.icon}
+            {themeOption.icon}
           </button>
         ))}
       </div>

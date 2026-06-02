@@ -46,5 +46,5 @@ export interface Profile {
 export interface ContactLink {
   label: string;
   value: string;
-  href: string;
+  href?: string;
 }
