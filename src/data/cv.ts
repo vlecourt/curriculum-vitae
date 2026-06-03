@@ -6,7 +6,7 @@ export const profile: Profile = {
   tagline: "10+ ans d'expérience · DevOps · AI tooling · Sensibilisation Cyber",
   email: "valentin.lecourt.tranchant@gmail.com",
   phone: "06 42 38 24 71",
-  github: "lecourtva",
+  github: "vlecourt",
   linkedin: "valentin-lecourt",
   location: "Grenoble, France",
 };
