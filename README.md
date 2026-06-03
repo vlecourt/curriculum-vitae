@@ -15,19 +15,26 @@ CV interactif de Valentin Lecourt — construit avec Next.js 16, React 19 et Tai
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Layout racine, script anti-flash thème
-│   ├── page.tsx            # Page principale (CV)
-│   └── secret/page.tsx     # Page easter egg (Konami code)
+│   ├── layout.tsx              # Layout racine, script anti-flash thème
+│   ├── page.tsx                # Page principale (CV)
+│   ├── print/page.tsx          # Version imprimable (/print)
+│   ├── secret/page.tsx         # Page easter egg (Konami code)
+│   ├── opengraph-image.tsx     # OG image générée dynamiquement
+│   ├── robots.ts               # robots.txt
+│   └── sitemap.ts              # sitemap.xml
 ├── components/
-│   ├── easter-eggs/        # KonamiCode, ConsoleGreeting
-│   ├── layout/             # Header, Footer, ThemeSwitcher
-│   ├── print/              # PrintButton, SiteQRCode
-│   ├── sections/           # Hero, Experience, Skills, Projects, Education, Contact
-│   └── ui/                 # Badge, Card, Section
+│   ├── easter-eggs/            # KonamiCode, ConsoleGreeting
+│   ├── layout/                 # Header, Footer, ThemeSwitcher
+│   ├── print/                  # PrintButton, PrintContent, SiteQRCode
+│   ├── sections/               # Hero, Experience, Skills, Projects, Education, Contact
+│   └── ui/                     # Badge, Card, Section
 ├── context/ThemeContext.tsx
-├── data/cv.ts              # Données du CV (source unique de vérité)
+├── data/
+│   ├── cv.ts                   # Données du CV (source unique de vérité)
+│   └── cv-fantasy.ts           # Variante heroic-fantasy du CV
 ├── hooks/useTypewriter.ts
-└── types/                  # cv.ts, theme.ts
+├── types/                      # cv.ts, theme.ts
+└── utils/consoleStyles.ts
 ```
 
 ## Lancer en local
@@ -46,7 +53,9 @@ npm run lint      # ESLint
 ## Fonctionnalités
 
 - **Mode sombre / clair** sans flash SSR (script bloquant injecté dans `<head>`)
-- **Version imprimable** avec QR code renvoyant vers le site en ligne
+- **Mode heroic-fantasy** — version "manuscrit enluminé" du CV accessible depuis le sélecteur de thème, avec ses propres données (`cv-fantasy.ts`)
+- **Version imprimable** à `/print` avec QR code renvoyant vers le site, compatible avec les trois thèmes (clair, sombre, fantasy) en une seule page A4
+- **SEO** : OG image dynamique, sitemap, robots.txt, canonical URLs, security headers
 - **Easter eggs** : Konami code → `/secret`, message de bienvenue dans la console développeur
 
 ## Déploiement (Railway)
