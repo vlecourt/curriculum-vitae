@@ -56,8 +56,12 @@ npm run lint      # ESLint
 - **Mode heroic-fantasy** — version "manuscrit enluminé" du CV accessible depuis le sélecteur de thème, avec ses propres données (`cv-fantasy.ts`)
 - **Version imprimable** à `/print` avec QR code renvoyant vers le site, compatible avec les trois thèmes (clair, sombre, fantasy) en une seule page A4
 - **SEO** : OG image dynamique, sitemap, robots.txt, canonical URLs, security headers
-- **Easter eggs** : Konami code → `/secret`, message de bienvenue dans la console développeur
+- **Easter eggs** : <details><summary>spoiler</summary>Konami code (↑↑↓↓←→←→BA) → `/secret`, message de bienvenue dans la console développeur</details>
 
 ## Déploiement (Railway)
 
 Le fichier `railway.toml` configure le build nixpacks et le démarrage avec `npm run start`. Pousser sur `main` déclenche un déploiement automatique.
+
+## Licence
+
+© 2026 Valentin LECOURT — Tous droits réservés. Voir [LICENSE](LICENSE).
