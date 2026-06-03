@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "LISI Automotive",
-    period: "2014 — 2019",
+    period: "2013 — 2019",
     type: "Alternance → CDI · Industrie",
     highlights: [
       "Optimisation et administration des bases de données ERP : vues, triggers, indexes, requêtes complexes",
