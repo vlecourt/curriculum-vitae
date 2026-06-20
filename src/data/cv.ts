@@ -43,7 +43,7 @@ export const education: Education[] = [
     degree: "ERASMUS — Artificial Intelligence & Real-time Systems",
     institution: "NTNU",
     location: "Norvège (top 75 Shanghai)",
-    period: "2015 — 2016",
+    period: "2015",
     details: ["Artificial Intelligence", "Reactive Systems", "Real-time Systems"],
   },
   {
@@ -102,11 +102,11 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "AI & Outils",
-    items: ["Claude / MCP", "Prompt Engineering", "Agents IA", "Copilot"],
+    items: ["Claude", "Context Engineering", "Agents IA", "Copilot"],
   },
   {
     category: "Pratiques",
-    items: ["DDD", "TDD", "SDD", "Clean Code", "Post-mortem", "Cybersécurité"],
+    items: ["DDD", "TDD", "SDD", "Clean Code", "Craft", "Post-mortem", "Cybersécurité"],
   },
 ];
 
